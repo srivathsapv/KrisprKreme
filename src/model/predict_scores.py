@@ -3,35 +3,17 @@ from sklearn.linear_model import LinearRegression, Ridge
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 from sklearn.svm import SVR
 from sklearn.neural_network import MLPRegressor
+import pickle
+
+import sys
+sys.path.append('../util')
+
+from featurize_helper import get_data_with_important_features
 
 print('reading data...')
 with open('./data/featurized.csv', 'rb') as csv_file:
     reader = csv.DictReader(csv_file)
     featurized_data = list(reader)
-
-def get_data_with_important_features(score_threshold):
-    importance_field_names = ('X', 'MeanDecreaseGini')
-    reader = csv.DictReader(open('../../datasets/crisprpred/pone.0181943.s002.csv'))
-
-    feature_importance = list(reader)
-
-    for feature in feature_importance:
-        feature['MeanDecreaseGini'] = float(feature['MeanDecreaseGini'])
-
-    sorted_importance = sorted(feature_importance, key=lambda k: k[importance_field_names[1]])
-    sorted_importance.reverse()
-
-    important_features = [feature['X'] for feature in sorted_importance if feature['MeanDecreaseGini'] >= score_threshold]
-    important_features.append('score')
-
-    dlist = []
-    for row in featurized_data:
-        new_data = {}
-        for feature in important_features:
-            new_data[feature] = row[feature]
-        dlist.append(new_data)
-
-    return dlist
 
 def get_data_and_scores(dlist):
     scores = [float(row['score']) for row in dlist]
@@ -52,7 +34,7 @@ def evaluate_model(model_name, sklearn_model, score_threshold=0.5, accuracy_thre
     print('Evaluation for model_name={}'.format(model_name))
     print('--------------------')
     print('getting data with important features')
-    feature_reduced_data = get_data_with_important_features(score_threshold=score_threshold)
+    feature_reduced_data = get_data_with_important_features(score_threshold=score_threshold, featurized_data=featurized_data)
     print('using {} features'.format(len(feature_reduced_data[0].keys())))
     print('getting training data...')
     train_data, train_scores = get_data_and_scores(feature_reduced_data[:4500])
@@ -67,7 +49,10 @@ def evaluate_model(model_name, sklearn_model, score_threshold=0.5, accuracy_thre
     print('Accuracy:', find_accuracy(test_scores, predicted_scores, accuracy_threshold))
     print('-------------------')
 
+    return sklearn_model
+
 #evaluate_model('Linear Regression', LinearRegression())
 #evaluate_model('Ridge', Ridge(alpha=12))
 #evaluate_model('SVM', SVR(C=10.0, epsilon=0.001, kernel='rbf', verbose=True), score_threshold=0.2)
-evaluate_model('MLPRegressor', MLPRegressor(hidden_layer_sizes=(150,), activation='tanh', solver='adam', verbose=True, max_iter=200))
+model = evaluate_model('MLPRegressor', MLPRegressor(hidden_layer_sizes=(150,), activation='tanh', solver='adam', verbose=True, random_state=5, max_iter=200))
+pickle.dump(model, open('../model_files/mlp_150_tanh_adam_mi200.pkl', 'wb'))
