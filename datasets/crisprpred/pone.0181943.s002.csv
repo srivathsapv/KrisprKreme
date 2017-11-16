@@ -9628,6 +9628,6 @@ TTTT_25,0
 TTTT_26,0
 TTTT_27,0
 mfe,5.5939567713
-heat,6.1134539489
-percentpeptide,12.7823915919
-aminoacidcutposition,9.7456693414
+specific_heat,6.1134539489
+percent_peptide,12.7823915919
+cut_position,9.7456693414

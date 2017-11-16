@@ -42,9 +42,11 @@ data_list = [[ float(v) for k, v in row.iteritems() if k != 'score'] for row in 
 #
 # print(len(rf_important_features))
 
+
 print('data aggregation done')
-feat_selector = boruta.BorutaPy(RandomForestRegressor(), n_estimators='auto', verbose=2)
+feat_selector = boruta.BorutaPy(RandomForestRegressor(), n_estimators='balanced', verbose=2)
 print('feat selector initialization')
+print(np.array(data_list).shape)
 feat_selector.fit(np.array(data_list), scores)
 print('fit')
 
