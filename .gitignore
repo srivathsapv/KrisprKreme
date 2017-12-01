@@ -2,4 +2,4 @@
 *.pyc
 */.ipynb_checkpoints/*
 .idea
-src/util/gemtools-1.7.1-i3
+src/util/gemtools-1.7.1-i3/*
