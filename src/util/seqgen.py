@@ -100,7 +100,3 @@ def generate_sequences(sgrna):
     passed_sequences = [seq for seq, score in score_map.iteritems() if score >= 0.4]
 
     return passed_sequences
-
-seqs = generate_sequences('AGCACCCAGGTACTCCACGT')
-print(len(seqs))
-#print(model_score_sequence('TTGAACTCGGCATTCGAGCGAAACTGGGGC'))
