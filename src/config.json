@@ -1,7 +1,7 @@
 {
 	"mismatch_tolerance": {
-		"seed": 1,
-		"non_seed": 3
+		"seed": 0,
+		"non_seed": 2
 	},
 	"gc_content_threshold": {
 		"low": 40,
@@ -9,5 +9,5 @@
 	},
 	"pam_sequences": ["AGG", "CGG", "TGG", "GGG"],
 	"sequence_length": 20,
-	"seed_sequence_length": 12
+	"seed_sequence_length": 14
 }

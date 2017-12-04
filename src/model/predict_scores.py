@@ -1,9 +1,11 @@
 import csv
-from sklearn.linear_model import LinearRegression, Ridge
+from sklearn.linear_model import LinearRegression, Ridge, ElasticNet
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 from sklearn.svm import SVR
 from sklearn.neural_network import MLPRegressor
 import pickle
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import GridSearchCV
 
 import sys
 sys.path.append('../util')
@@ -30,7 +32,7 @@ def find_accuracy(gt, pred, threshold=0.15):
             hits += 1
     return (float(hits)/float(total)) * 100
 
-def evaluate_model(model_name, sklearn_model, score_threshold=0.5, accuracy_threshold=0.15):
+def evaluate_model(model_name, sklearn_model, score_threshold=0.5, accuracy_threshold=0.1):
     print('Evaluation for model_name={}'.format(model_name))
     print('--------------------')
     print('getting data with important features')
@@ -54,5 +56,9 @@ def evaluate_model(model_name, sklearn_model, score_threshold=0.5, accuracy_thre
 #evaluate_model('Linear Regression', LinearRegression())
 #evaluate_model('Ridge', Ridge(alpha=12))
 #evaluate_model('SVM', SVR(C=10.0, epsilon=0.001, kernel='rbf', verbose=True), score_threshold=0.2)
-model = evaluate_model('MLPRegressor', MLPRegressor(hidden_layer_sizes=(150,), activation='tanh', solver='adam', verbose=True, random_state=5, max_iter=200))
-pickle.dump(model, open('../model_files/mlp_150_tanh_adam_mi200.pkl', 'wb'))
+#evaluate_model('Elastic Net', ElasticNet(alpha=5.0, copy_X=True, fit_intercept=True, l1_ratio=0.5, selection='cyclic', normalize=False, positive=False))
+#model = evaluate_model('MLPRegressor', MLPRegressor(hidden_layer_sizes=(200,), activation='logistic', solver='adam', verbose=True, random_state=5, max_iter=200))
+model = evaluate_model('Random Forest', RandomForestRegressor(n_estimators=150, max_depth=128, random_state=0, verbose=2))
+
+#pickle.dump(model, open('../model_files/mlp_150_tanh_adam_mi200.pkl', 'wb'))
+pickle.dump(model, open('../model_files/rf_150_128.pkl', 'wb'))

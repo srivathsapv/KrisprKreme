@@ -2,6 +2,8 @@ import sys
 import json
 import os
 import itertools
+import numpy as np
+from score_sequence import get_score as model_score_sequence
 
 ALPHA = 'ACGT'
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -14,7 +16,7 @@ def gc_content(seq):
 
     return int((gc/total)*100)
 
-def score_sequence(seq):
+def crude_score_sequence(seq):
     gc_content_low = config['gc_content_threshold']['low']
     gc_content_high = config['gc_content_threshold']['high']
 
@@ -93,7 +95,12 @@ def generate_sequences(sgrna):
     seed_neighbors = generate_hamming_neighbors(seed_sequence, ALPHA, config['mismatch_tolerance']['seed'])
 
     all_sequences = list(set([non_seed + seed + pam for non_seed in non_seed_neighbors for seed in seed_neighbors for pam in pam_sequences]))
+    score_map = { seq: crude_score_sequence(seq) for seq in all_sequences }
 
-    score_map = { seq: score_sequence(seq) for seq in all_sequences }
+    passed_sequences = [seq for seq, score in score_map.iteritems() if score >= 0.4]
 
-    return all_sequences
+    return passed_sequences
+
+seqs = generate_sequences('AGCACCCAGGTACTCCACGT')
+print(len(seqs))
+#print(model_score_sequence('TTGAACTCGGCATTCGAGCGAAACTGGGGC'))

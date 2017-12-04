@@ -2,7 +2,6 @@ import itertools
 import os
 import csv
 
-
 def generate_poly_nucleotides(alpha, max_n=4):
     poly_nucleotides = []
     for i in range(1, max_n + 1):
@@ -76,7 +75,7 @@ def extract_features(processed_json, score=None):
 
 def get_data_with_important_features(score_threshold, featurized_data, score=True):
     importance_field_names = ('X', 'MeanDecreaseGini')
-    reader = csv.DictReader(open('../datasets/crisprpred/pone.0181943.s002.csv'))
+    reader = csv.DictReader(open('../../datasets/crisprpred/pone.0181943.s002.csv'))
 
     feature_importance = list(reader)
 
@@ -96,7 +95,10 @@ def get_data_with_important_features(score_threshold, featurized_data, score=Tru
     for row in featurized_data:
         new_data = {}
         for feature in important_features:
-            new_data[feature] = row[feature]
+            if feature in row:
+                new_data[feature] = row[feature]
+            else:
+                new_data[feature] = 0
         dlist.append(new_data)
 
     return dlist
