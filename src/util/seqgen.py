@@ -82,6 +82,8 @@ def generate_hamming_neighbors(st, alph, edits=1):
     return ret
 
 def generate_sequences(sgrna):
+    sgrna = sgrna.upper()
+    
     pam_sequences = config['pam_sequences']
 
     sequence_length = config['sequence_length']
