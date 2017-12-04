@@ -25,8 +25,8 @@ def parse_cmd_args():
 
 def create_indices():
     # os.system(INDEX_COMMAND)
-    os.system(MAP_COMMAND)
-    os.system(SAM_COMMAND)
+    os.popen(MAP_COMMAND).read()
+    os.popen(SAM_COMMAND).read()
 
 
 def parse_sam_file(infile):
