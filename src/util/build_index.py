@@ -5,12 +5,13 @@ import argparse
 import glob
 import os
 import pickle
-import constants
+
 from pybloom import ScalableBloomFilter
 
 KMER_SIZE = 23
 INPUT_SEQUENCE = ['X'] * 23
 BLOOM_EXTENSION = ".pkl"
+
 
 def parse_cmd_args():
     """
@@ -52,17 +53,18 @@ def build_index(file_handle, file_name):
     :param file_handle: The handle to the file
     :param file_name: The name of the file
     """
-    c = True
-    sbf = ScalableBloomFilter(mode=ScalableBloomFilter.LARGE_SET_GROWTH)
-    while c:
-        c = file_handle.read(1)
-        if c != '\n':
-            INPUT_SEQUENCE.pop(0)
-            INPUT_SEQUENCE.append(c.upper())
-            sequence = ''.join(INPUT_SEQUENCE)
-            print "Processing: " + sequence
-            sbf.add(sequence)
-    save_object(sbf, str(file_name) + BLOOM_EXTENSION)
+    # c = True
+    # sbf = ScalableBloomFilter(mode=ScalableBloomFilter.LARGE_SET_GROWTH)
+    # while c:
+    #     c = file_handle.read(1)
+    #     if c != '\n':
+    #         INPUT_SEQUENCE.pop(0)
+    #         INPUT_SEQUENCE.append(c.upper())
+    #         sequence = ''.join(INPUT_SEQUENCE)
+    #         print "Processing: " + sequence
+    #         sbf.add(sequence)
+    # save_object(sbf, str(file_name) + BLOOM_EXTENSION)
+    os.system("gem-indexer -i " + file_name + " -o " + file_name + ".gem -c \'dna\'")
 
 
 def build_indices(files):
@@ -74,7 +76,7 @@ def build_indices(files):
     for fa_file in files:
         with open(fa_file, "r") as file_handle:
             print fa_file
-            file_handle.readline() # read the first line
+            file_handle.readline()  # read the first line
             build_index(file_handle, fa_file)
             print "\n done with file " + str(file_handle)
 
@@ -84,8 +86,9 @@ def main(get_command_line_args=True, cmdargs=None):
     Main Sentinel.
     """
     args = parse_cmd_args() if get_command_line_args else cmdargs
-    files = get_file_list(args[constants.PATH])
+    files = get_file_list(args["path"])
     build_indices(files)
+
 
 if __name__ == "__main__":
     main()

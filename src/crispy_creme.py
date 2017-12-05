@@ -2,6 +2,9 @@
 Driver Script
 """
 import argparse
+from util import build_index
+import constants
+
 
 def parse_cmd_args():
     """Parses Command Line args
@@ -17,12 +20,14 @@ def parse_cmd_args():
 
     # Build sub parser
     build_parser = subparsers.add_parser('build', help="options to build the bloom filter indices")
+    build_parser.set_defaults(which="build_parser")
     build_parser.add_argument('-p', '--path', type=str,
                               required=True,
                               help='path to the directory with all the fasta files.')
 
     # Query sub parser
     query_parser = subparsers.add_parser('query', help="options to query an sgRNA sequence in the genome")
+    query_parser.set_defaults(which="query_parser")
     query_parser.add_argument('-p', '--path',
                               type=str,
                               required=True,
@@ -35,12 +40,36 @@ def parse_cmd_args():
     return vars(args)
 
 
+def handle_build_parser(args):
+    """Handles the build index portion of the program
+
+    Passes the cmdline args to the build_index module
+
+    Arguments:
+        args {map} -- A dict with the cmdline arguments
+    """
+    build_index.main(False, args)
+
+
+def handle_query_parser(args):
+    """Handles the query portion of the program
+
+    Passes the cmdline args to the genome_query module
+
+    Arguments:
+        args {map} -- A dict with the cmdline arguments
+    """
+    print "Calling " + args["which"]
+
+
 def main():
     """Main Sentinel
 
     Prevents the module from flywheeling if included
     """
-    parse_cmd_args()
+    args = parse_cmd_args()
+    globals()["handle_" + str(args["which"])](args)
+
 
 if __name__ == "__main__":
     main()
