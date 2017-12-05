@@ -5,7 +5,7 @@ import argparse
 import glob
 import os
 import pickle
-import time
+import constants
 from pybloom import ScalableBloomFilter
 
 KMER_SIZE = 23
@@ -31,7 +31,7 @@ def get_file_list(path):
     :param path: the path to the fasta files
     :return: The list of fasta files in the path with the path prefixed
     """
-    return glob.glob(path + "/" + str("*.fa"))
+    return glob.glob(path + os.path.sep + str("*.fa"))
 
 
 def save_object(obj, filename):
@@ -79,12 +79,12 @@ def build_indices(files):
             print "\n done with file " + str(file_handle)
 
 
-def main():
+def main(get_command_line_args=True, cmdargs=None):
     """
     Main Sentinel.
     """
-    args = parse_cmd_args()
-    files = get_file_list(args["path"])
+    args = parse_cmd_args() if get_command_line_args else cmdargs
+    files = get_file_list(args[constants.PATH])
     build_indices(files)
 
 if __name__ == "__main__":
