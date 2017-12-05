@@ -34,6 +34,9 @@ def get_ontarget_scores(putative_sites):
 
     return sites_copy
 
+"""
+Sample Dict
+
 psites = [{
     'id': 1,
     'chr_path': 'path_to_chr/chr17.fa',
@@ -53,6 +56,7 @@ psites = [{
     'end': 950,
     'sequence': 'AAAAAACCTACTCGAAACCGCCGTCGGCCT'
 }]
+"""
 
 def rank_putative_sites(putative_sites, n_sites=10):
     sites = get_ontarget_scores(putative_sites)
@@ -61,5 +65,3 @@ def rank_putative_sites(putative_sites, n_sites=10):
     sites.sort(key=lambda d:d['on_target'])
 
     return sites[::-1][:n_sites]
-
-print(rank_putative_sites(psites))
