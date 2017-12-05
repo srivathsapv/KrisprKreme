@@ -4,7 +4,7 @@ def is_valid_sgrna(sgrna):
 	sgrna = sgrna.upper()
 
 	if len(sgrna) != 23:
-		raise ValueError('sgRNA string should be of length 23 (sequence of length 20 and 3 character PAM)')
+		raise ValueError('sgRNA string should be of length 23 (sequence of length 20 followed by 3 character PAM)')
 
 	chars_sgrna = re.search('[^ATGC]', sgrna)
 	if chars_sgrna is not None:
