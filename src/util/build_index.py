@@ -64,7 +64,7 @@ def build_index(file_handle, file_name):
     #         print "Processing: " + sequence
     #         sbf.add(sequence)
     # save_object(sbf, str(file_name) + BLOOM_EXTENSION)
-    os.system("gem-indexer -i " + file_name + " -o " + file_name + ".gem -c \'dna\'")
+    os.system("gem-indexer -i " + file_name + " -o " + file_name + " -c \'dna\'")
 
 
 def build_indices(files):

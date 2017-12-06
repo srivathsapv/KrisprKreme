@@ -5,6 +5,7 @@ import argparse
 from util import build_index, seqgen, validate
 import constants
 
+
 def parse_cmd_args():
     """Parses Command Line args
 
@@ -30,9 +31,9 @@ def parse_cmd_args():
     query_parser.add_argument('-p', '--path',
                               type=str,
                               required=True,
-                              help="path to the directory with the bloom filter pickles")
+                              help="path to the directory with the bloom filter pickles and gems")
     query_parser.add_argument('-s', '--sequence', required=True, help="The query sequence")
-    query_parser.add_argument("-o", "--ouput", type=str, required=True, help="Where to write the output file")
+    query_parser.add_argument("-o", "--output", type=str, required=True, help="Where to write the output file")
 
     # Parse args
     args = parser.parse_args()
@@ -58,11 +59,9 @@ def handle_query_parser(args):
     Arguments:
         args {map} -- A dict with the cmdline arguments
     """
-
     sgrna = args["sequence"]
     validate.is_valid_sgrna(sgrna)
-
-    return seqgen.generate_sequences(sgrna)
+    potential_sequences = seqgen.generate_sequences(sgrna)
 
 
 def main():
