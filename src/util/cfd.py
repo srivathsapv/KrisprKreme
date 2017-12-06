@@ -19,17 +19,17 @@ def revcom(s):
 #Unpickle mismatch scores and PAM scores
 def get_mm_pam_scores():
     try:
-        mm_scores = pickle.load(open('mismatch_score.pkl','rb'))
-        pam_scores = pickle.load(open('pam_scores.pkl','rb'))
+        mm_scores = pickle.load(open('src/util/mismatch_score.pkl','rb'))
+        pam_scores = pickle.load(open('src/util/pam_scores.pkl','rb'))
         return (mm_scores, pam_scores)
     except:
         raise Exception("Could not find file with mismatch scores or PAM scores")
 
 #Calculates CFD score
 def calc_cfd(seq1, seq2):
-    sg = seq2[4:24]
-    wt = seq1[4:24]
-    pam = seq1[25:27]
+    sg = seq1
+    wt = seq2[4:24]
+    pam = seq2[25:27]
 
     mm_scores,pam_scores = get_mm_pam_scores()
     score = 1

@@ -75,7 +75,7 @@ def extract_features(processed_json, score=None):
 
 def get_data_with_important_features(score_threshold, featurized_data, score=True):
     importance_field_names = ('X', 'MeanDecreaseGini')
-    reader = csv.DictReader(open('../../datasets/crisprpred/pone.0181943.s002.csv'))
+    reader = csv.DictReader(open('datasets/crisprpred/pone.0181943.s002.csv'))
 
     feature_importance = list(reader)
 

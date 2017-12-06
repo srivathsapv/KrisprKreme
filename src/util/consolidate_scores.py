@@ -6,7 +6,7 @@ def parse_chr_name(fa_filepath):
     filename = splits[len(splits) - 1]
     return filename.split('.')[0]
 
-def get_offtarget_scores(putative_sites):
+def get_offtarget_scores(sgrna, putative_sites):
     sites_copy = putative_sites[:]
     for site in sites_copy:
         site['chr'] = parse_chr_name(site['chr_path'])
@@ -21,7 +21,7 @@ def get_offtarget_scores(putative_sites):
         else:
             off_target = 0.0
             for neighbor in chr_neighbors:
-                off_target += score_offtarget(dna_site['sequence'], neighbor['sequence'])
+                off_target += score_offtarget(sgrna, neighbor['sequence'])
             dna_site['off_target'] = round(off_target, 5)
 
     return sites_copy
@@ -36,7 +36,7 @@ def get_ontarget_scores(putative_sites):
 
 """
 Sample Dict
-
+"""
 psites = [{
     'id': 1,
     'chr_path': 'path_to_chr/chr17.fa',
@@ -56,12 +56,16 @@ psites = [{
     'end': 950,
     'sequence': 'AAAAAACCTACTCGAAACCGCCGTCGGCCT'
 }]
-"""
 
-def rank_putative_sites(putative_sites, n_sites=10):
-    sites = get_ontarget_scores(putative_sites)
-    sites = get_offtarget_scores(sites)
+
+def rank_putative_sites(sgrna, putative_sites, n_sites=10):
+    sites = get_offtarget_scores(sgrna, putative_sites)
+    sites = get_ontarget_scores(sites)
+
 
     sites.sort(key=lambda d:d['on_target'])
 
     return sites[::-1][:n_sites]
+
+
+print(rank_putative_sites('CCTACCGTAAACTCCCGTCC', psites))
