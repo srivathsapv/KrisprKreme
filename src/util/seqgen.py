@@ -83,7 +83,7 @@ def generate_hamming_neighbors(st, alph, edits=1):
 
 def generate_sequences(sgrna):
     sgrna = sgrna.upper()
-    
+
     pam_sequences = config['pam_sequences']
 
     sequence_length = config['sequence_length']
@@ -97,8 +97,12 @@ def generate_sequences(sgrna):
     seed_neighbors = generate_hamming_neighbors(seed_sequence, ALPHA, config['mismatch_tolerance']['seed'])
 
     all_sequences = list(set([non_seed + seed + pam for non_seed in non_seed_neighbors for seed in seed_neighbors for pam in pam_sequences]))
+    print(len(all_sequences))
     score_map = { seq: crude_score_sequence(seq) for seq in all_sequences }
 
     passed_sequences = [seq for seq, score in score_map.iteritems() if score >= 0.4]
 
+    if len(passed_sequences) == 0:
+        return all_sequences
+    
     return passed_sequences

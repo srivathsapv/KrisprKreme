@@ -2,9 +2,8 @@
 Driver Script
 """
 import argparse
-from util import build_index
+from util import build_index, seqgen, validate
 import constants
-
 
 def parse_cmd_args():
     """Parses Command Line args
@@ -59,7 +58,11 @@ def handle_query_parser(args):
     Arguments:
         args {map} -- A dict with the cmdline arguments
     """
-    print "Calling " + args["which"]
+
+    sgrna = args["sequence"]
+    validate.is_valid_sgrna(sgrna)
+
+    return seqgen.generate_sequences(sgrna)
 
 
 def main():

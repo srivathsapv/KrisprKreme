@@ -2,7 +2,7 @@ import pickle
 from featurize_helper import extract_features, get_data_with_important_features
 import json
 
-processed_data = json.loads(open('../model/data/processed.json').read())
+processed_data = json.loads(open('src/model/data/processed.json').read())
 
 def hamming_distance(str1, str2):
     if len(str1) != len(str2):
@@ -24,5 +24,5 @@ def get_score(seq):
 
     featurized_row = get_data_with_important_features(0.5, [extract_features(seq_json)], False)[0]
     dlist = [float(v) for k, v in featurized_row.iteritems() if k != 'score']
-    model = pickle.load(open('../model_files/rf_150_16.pkl', 'rb'))
+    model = pickle.load(open('src/model_files/rf_150_16.pkl', 'rb'))
     return model.predict([dlist])[0]
