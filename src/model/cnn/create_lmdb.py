@@ -6,6 +6,7 @@ import lmdb
 import numpy as np
 from caffe.io import array_to_datum
 import matplotlib.image as mp
+from random import shuffle
 
 SEQUENCE_LENGTH = 30
 ALPHA_LENGTH = 4
@@ -47,5 +48,7 @@ def create_lmdb(db_name, labels):
     env.close()
     print('Done creating {}!'.format(db_name))
 
-create_lmdb('sgrna_train_lmdb_dummy', all_labels[:5000])
+shuffle(all_labels)
+
+create_lmdb('sgrna_train_lmdb', all_labels[:5000])
 create_lmdb('sgrna_test_lmdb', all_labels[5000:])
