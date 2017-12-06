@@ -1,8 +1,17 @@
+"""
+Author: Srinivas Suresh Kumar
+Date: 12/5/2017
+"""
 import argparse
 import os
 import glob
+import json
 import pickle
+import sys
 import seqgen
+import uuid
+
+from colorama import init, Fore, Back, Style
 from pybloom import ScalableBloomFilter
 
 
@@ -22,6 +31,21 @@ def parse_cmd_args():
     return vars(args)
 
 
+def read_genome(infile):
+    """
+    Reads a fas file
+    :param infile: 
+    :return: 
+    """
+    with open(infile, 'r') as fh:
+        lines = fh.readlines()
+    genome = ""
+    lines = lines[1:]
+    for line in lines:
+        genome += line.strip()
+    return genome
+
+
 def make_query_file(sequence):
     """
     Makes a query fasta file
@@ -34,7 +58,7 @@ def make_query_file(sequence):
     return "query.fa"
 
 
-def bloom_gem_query(sequence, path):
+def bloom_query(sequence, path):
     """
     Queries the bloom filters on the path
     :param sequence: the sequence to query
@@ -47,7 +71,8 @@ def bloom_gem_query(sequence, path):
     for fa_file in fa_files:
         count = 0
         bloom_file = fa_file + ".pkl"
-        print "Opening " + bloom_file
+        sys.stdout.write(" ")
+        print (Fore.WHITE + Back.BLUE + "Opening " + bloom_file)
         bloom_filter = pickle.load(open(bloom_file, 'rb'))
         for seq in potential_sequences:
             if seq in bloom_filter:
@@ -56,8 +81,73 @@ def bloom_gem_query(sequence, path):
                     sequence_file_map[seq].append(str(fa_file))
                 else:
                     sequence_file_map[seq] = [str(fa_file)]
-        print "\t" + str(count) + " matches in this chromosome\n"
+        print Style.RESET_ALL + "\t" + str(count) + " matches in this chromosome"
+        print Style.RESET_ALL
     return sequence_file_map
+
+
+def parse_sam_file(infile):
+    # From shubha's sam parser
+    match_list = []
+    with open(infile, 'r') as query:
+        for line in query:
+            line = line.rstrip()
+
+            # Get each line delimited by tab
+            if line.startswith('@'):
+                continue
+            else:
+                line = line.split("\t")
+                offset = line[3]
+                match_list.append(offset)
+
+    return match_list
+
+
+def gem_query(sequence_file_map):
+    """
+    Performs a gem query for every sequence and file in the sequence file map
+    :param sequence_file_map: a map of sequences to fa files they occur in  
+    :return: None
+    """
+    sys.stdout.write(Fore.WHITE + Back.RED + "\n Starting GEM query")
+    sys.stdout.flush()
+    alignment_list = []
+    for seq in sequence_file_map:
+        alignment_map = {}
+        query_file = make_query_file(seq)
+        for target_file in sequence_file_map[seq]:
+            sys.stdout.write(".")
+            sys.stdout.flush()
+            alignment_map["id"] = str(uuid.uuid4())
+            alignment_map["chr_path"] = str(target_file)
+            alignment_map["query_sequqnce"] = seq
+            gem_file = str(target_file) + ".gem"
+            os.system(
+                "gem-mapper -I " + gem_file + " -i " + query_file + " -q \'ignore\' -m 0 -o output >/dev/null 2>&1")
+            os.system("gem-2-sam -i output.map -o output.sam >/dev/null 2>&1")
+            matches = parse_sam_file("output.sam")
+            for match in matches:
+                match = int(match)
+                match -= 5
+                alignment_map["start"] = match
+                alignment_map["end"] = int(match) + 30
+                genome = read_genome(target_file)
+                alignment_map["sequence"] = genome[match: (match + 30)]
+                alignment_list.append(alignment_map)
+    print "\n Done"
+    return alignment_list
+
+
+def query(sequence, path):
+    """
+    Performs a bloom filter query followed by a gem query
+    :param sequence: the query sequence
+    :param path: the path wo where the bloom filters, fa files and gem files are
+    :return: an offset map
+    """
+    sequence_file_map = bloom_query(sequence, path)
+    return gem_query(sequence_file_map)
 
 
 def main(get_cmd_line_args=True, input_args=None):
@@ -65,7 +155,9 @@ def main(get_cmd_line_args=True, input_args=None):
     Main Sentinel.
     :return: None
     """
+    init()
     args = parse_cmd_args() if get_cmd_line_args else input_args
-    query_file = make_query_file(args["sequence"])
-    print bloom_gem_query(args["sequence"], args["path"])
-
+    # query_file = make_query_file(args["sequence"])
+    answers = query(args["sequence"], args["path"])
+    with open(args["output"], 'w') as output_file:
+        output_file.write(json.dumps(answers))

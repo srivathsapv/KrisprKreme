@@ -1,5 +1,6 @@
 """
-Driver Script
+Author: Srinivas Suresh Kumar
+Date: 12/5/2017
 """
 import argparse
 from util import build_index, validate, query_genome
