@@ -2,7 +2,7 @@ import argparse
 import os
 import glob
 import pickle
-
+import seqgen
 from pybloom import ScalableBloomFilter
 
 
@@ -29,24 +29,35 @@ def make_query_file(sequence):
     :return: Path to created query file
     """
     with open("query.fa", "w") as file_handle:
-        file_handle.write(">query")
-        file_handle.write(sequence)
+        file_handle.write(">query\n")
+        file_handle.write(sequence + "\n")
     return "query.fa"
 
 
-def bloom_query(sequence, path):
+def bloom_gem_query(sequence, path):
     """
     Queries the bloom filters on the path
     :param sequence: the sequence to query
     :param path: the path to the bloom filters
-    :return: a list of fasta files where the bloom filters are
+    :return: a map with the potential sgrna sequence and it files it is likely to be in
     """
+    potential_sequences = seqgen.generate_sequences(sequence)
     fa_files = glob.glob(path + os.path.sep + str("*.fa"))
-    matching_fas_files = []
+    sequence_file_map = {}
     for fa_file in fa_files:
+        count = 0
         bloom_file = fa_file + ".pkl"
+        print "Opening " + bloom_file
         bloom_filter = pickle.load(open(bloom_file, 'rb'))
-        if sequence in b
+        for seq in potential_sequences:
+            if seq in bloom_filter:
+                count += 1
+                if seq in sequence_file_map:
+                    sequence_file_map[seq].append(str(fa_file))
+                else:
+                    sequence_file_map[seq] = [str(fa_file)]
+        print "\t" + str(count) + " matches in this chromosome\n"
+    return sequence_file_map
 
 
 def main(get_cmd_line_args=True, input_args=None):
@@ -56,3 +67,5 @@ def main(get_cmd_line_args=True, input_args=None):
     """
     args = parse_cmd_args() if get_cmd_line_args else input_args
     query_file = make_query_file(args["sequence"])
+    print bloom_gem_query(args["sequence"], args["path"])
+

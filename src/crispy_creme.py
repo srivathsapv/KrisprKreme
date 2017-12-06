@@ -2,8 +2,7 @@
 Driver Script
 """
 import argparse
-from util import build_index, seqgen, validate
-import constants
+from util import build_index, validate, query_genome
 
 
 def parse_cmd_args():
@@ -61,7 +60,7 @@ def handle_query_parser(args):
     """
     sgrna = args["sequence"]
     validate.is_valid_sgrna(sgrna)
-    potential_sequences = seqgen.generate_sequences(sgrna)
+    query_genome.main(False, args)
 
 
 def main():

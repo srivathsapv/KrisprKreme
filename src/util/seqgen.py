@@ -1,20 +1,18 @@
-import sys
 import json
 import os
-import itertools
-import numpy as np
-from score_sequence import get_score as model_score_sequence
 
 ALPHA = 'ACGT'
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
 config = json.loads(open(DIR_PATH + '/../config.json').read())
 
+
 def gc_content(seq):
     total = float(len(seq))
     gc = float(len([c for c in seq if c == 'G' or c == 'C']))
 
-    return int((gc/total)*100)
+    return int((gc / total) * 100)
+
 
 def crude_score_sequence(seq):
     gc_content_low = config['gc_content_threshold']['low']
@@ -26,7 +24,6 @@ def crude_score_sequence(seq):
         gc_score = 1
     else:
         gc_score = 0.5
-
 
     if seq[19] == 'G':
         g20_score = 1
@@ -53,7 +50,7 @@ def crude_score_sequence(seq):
     else:
         a10_score = 0.9
 
-    #check PAM
+    # check PAM
     if seq[20] == 'C':
         pam_variable_score = 1
     elif seq[20] == 'T':
@@ -62,6 +59,7 @@ def crude_score_sequence(seq):
         pam_variable_score = 0.8
 
     return (gc_score * g20_score * c20_minus_score * c16_score * g16_minus_score * a10_score * pam_variable_score)
+
 
 def generate_hamming_neighbors(st, alph, edits=1):
     ret = set()
@@ -81,6 +79,7 @@ def generate_hamming_neighbors(st, alph, edits=1):
 
     return ret
 
+
 def generate_sequences(sgrna):
     sgrna = sgrna.upper()
 
@@ -96,13 +95,7 @@ def generate_sequences(sgrna):
     non_seed_neighbors = generate_hamming_neighbors(non_seed_sequence, ALPHA, config['mismatch_tolerance']['non_seed'])
     seed_neighbors = generate_hamming_neighbors(seed_sequence, ALPHA, config['mismatch_tolerance']['seed'])
 
-    all_sequences = list(set([non_seed + seed + pam for non_seed in non_seed_neighbors for seed in seed_neighbors for pam in pam_sequences]))
-    print(len(all_sequences))
-    score_map = { seq: crude_score_sequence(seq) for seq in all_sequences }
-
-    passed_sequences = [seq for seq, score in score_map.iteritems() if score >= 0.4]
-
-    if len(passed_sequences) == 0:
-        return all_sequences
-    
-    return passed_sequences
+    all_sequences = list(set(
+        [non_seed + seed + pam for non_seed in non_seed_neighbors for seed in seed_neighbors for pam in pam_sequences]))
+    print "Number of generated sequences " + str((len(all_sequences)))
+    return all_sequences

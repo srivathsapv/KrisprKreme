@@ -53,17 +53,17 @@ def build_index(file_handle, file_name):
     :param file_handle: The handle to the file
     :param file_name: The name of the file
     """
-    # c = True
-    # sbf = ScalableBloomFilter(mode=ScalableBloomFilter.LARGE_SET_GROWTH)
-    # while c:
-    #     c = file_handle.read(1)
-    #     if c != '\n':
-    #         INPUT_SEQUENCE.pop(0)
-    #         INPUT_SEQUENCE.append(c.upper())
-    #         sequence = ''.join(INPUT_SEQUENCE)
-    #         print "Processing: " + sequence
-    #         sbf.add(sequence)
-    # save_object(sbf, str(file_name) + BLOOM_EXTENSION)
+    c = True
+    sbf = ScalableBloomFilter(mode=ScalableBloomFilter.LARGE_SET_GROWTH)
+    while c:
+        c = file_handle.read(1)
+        if c != '\n':
+            INPUT_SEQUENCE.pop(0)
+            INPUT_SEQUENCE.append(c.upper())
+            sequence = ''.join(INPUT_SEQUENCE)
+            print "Processing: " + sequence
+            sbf.add(sequence)
+    save_object(sbf, str(file_name) + BLOOM_EXTENSION)
     os.system("gem-indexer -i " + file_name + " -o " + file_name + " -c \'dna\'")
 
 
