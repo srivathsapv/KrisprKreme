@@ -2,10 +2,12 @@ from score_sequence import get_score as score_ontarget
 from cfd import calc_cfd as score_offtarget
 import json
 
+
 def parse_chr_name(fa_filepath):
-    splits =  fa_filepath.split('/')
+    splits = fa_filepath.split('/')
     filename = splits[len(splits) - 1]
     return filename.split('.')[0]
+
 
 def get_offtarget_scores(sgrna, putative_sites):
     sites_copy = putative_sites[:]
@@ -27,6 +29,7 @@ def get_offtarget_scores(sgrna, putative_sites):
 
     return sites_copy
 
+
 def get_ontarget_scores(putative_sites):
     sites_copy = putative_sites[:]
 
@@ -35,12 +38,13 @@ def get_ontarget_scores(putative_sites):
 
     return sites_copy
 
+
 def rank_putative_sites(sgrna, putative_sites_file, n_sites=10):
     putative_sites = json.loads(open(putative_sites_file, 'r').read())
 
     sites = get_offtarget_scores(sgrna, putative_sites)
     sites = get_ontarget_scores(sites)
 
-    sites.sort(key=lambda d:d['on_target'])
+    sites.sort(key=lambda d: d['on_target'])
 
     return sites[::-1][:n_sites]

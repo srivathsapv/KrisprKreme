@@ -2,6 +2,7 @@ import itertools
 import os
 import csv
 
+
 def generate_poly_nucleotides(alpha, max_n=4):
     poly_nucleotides = []
     for i in range(1, max_n + 1):
@@ -67,7 +68,7 @@ def extract_features(processed_json, score=None):
         {'cut_position': processed_json['cut_position'], 'percent_peptide': processed_json['percent_peptide']})
     features.update({'mfe': mfe(seq), 'specific_heat': heat(seq)})
 
-    if score != None:
+    if not score:
         features.update({'score': processed_json['score']})
 
     return features
