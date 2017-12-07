@@ -1,7 +1,4 @@
-"""
-Author: Srinivas Suresh Kumar
-Date: 12/5/2017
-"""
+
 import argparse
 import os
 import glob
@@ -160,4 +157,8 @@ def main(get_cmd_line_args=True, input_args=None):
     # query_file = make_query_file(args["sequence"])
     answers = query(args["sequence"], args["path"])
     with open(args["output"], 'w') as output_file:
-        output_file.write(json.dumps(answers))
+        output_file.write(json.dumps(answers, indent=4, sort_keys=True))
+
+
+if __name__ == "__main__":
+    main()

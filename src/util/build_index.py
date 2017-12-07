@@ -1,7 +1,4 @@
-"""
-Author: Srinivas Suresh Kumar
-Date: 12/5/2017
-"""
+
 import argparse
 import glob
 import os
