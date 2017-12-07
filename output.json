@@ -1,0 +1,102 @@
+[
+    {
+        "chr": "chr4", 
+        "end": 120371689, 
+        "id": "d482af8f-98de-4e01-8403-ec25f5eabb86", 
+        "off_target": 0.72727, 
+        "on_target": 0.46059808119078754, 
+        "query_sequence": "TTATACAAATATAGAAGAAACGG", 
+        "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
+        "start": 120371659
+    }, 
+    {
+        "chr": "chr1", 
+        "end": 174250, 
+        "id": "587171d0-ffae-47ff-8dc8-85abad791ef4", 
+        "off_target": 4.0, 
+        "on_target": 0.46059808119078754, 
+        "query_sequence": "TTATACAAATATAGAAGAAACGG", 
+        "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
+        "start": 174220
+    }, 
+    {
+        "chr": "chr1", 
+        "end": 710048, 
+        "id": "5a8ae6d1-024f-4daa-9b64-b84f00041aab", 
+        "off_target": 4.0, 
+        "on_target": 0.46059808119078754, 
+        "query_sequence": "TTATACAAATATAGAAGAAACGG", 
+        "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
+        "start": 710018
+    }, 
+    {
+        "chr": "chr1", 
+        "end": 224176244, 
+        "id": "5e6b5933-7ce9-411a-834d-d3b4969f06b1", 
+        "off_target": 4.0, 
+        "on_target": 0.46059808119078754, 
+        "query_sequence": "TTATACAAATATAGAAGAAACGG", 
+        "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
+        "start": 224176214
+    }, 
+    {
+        "chr": "chr1", 
+        "end": 222693462, 
+        "id": "4c5543a3-3b77-4f58-ba24-7ec204efd683", 
+        "off_target": 4.0, 
+        "on_target": 0.46059808119078754, 
+        "query_sequence": "TTATACAAATATAGAAGAAACGG", 
+        "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
+        "start": 222693432
+    }, 
+    {
+        "chr": "chr1", 
+        "end": 243260989, 
+        "id": "4ea8a2df-02d9-40e3-bbd3-8aa92e8a8a2c", 
+        "off_target": 4.0, 
+        "on_target": 0.46059808119078754, 
+        "query_sequence": "TTATACAAATATAGAAGAAACGG", 
+        "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
+        "start": 243260959
+    }, 
+    {
+        "chr": "chr7", 
+        "end": 10559, 
+        "id": "a5b6981f-8703-4d91-9483-9f663da3bef9", 
+        "off_target": 0.0, 
+        "on_target": 0.46059808119078754, 
+        "query_sequence": "TTATACAAATATAGAAGAAACGG", 
+        "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
+        "start": 10529
+    }, 
+    {
+        "chr": "chr11", 
+        "end": 169440, 
+        "id": "ad44ac78-b919-4a98-8bce-a9b1277355ba", 
+        "off_target": 0.0, 
+        "on_target": 0.46059808119078754, 
+        "query_sequence": "TTATACAAATATAGAAGAAACGG", 
+        "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
+        "start": 169410
+    }, 
+    {
+        "chr": "chr19", 
+        "end": 239627, 
+        "id": "ec5e9f6e-a386-4aa0-bac7-e8f8a4c21f59", 
+        "off_target": 0.0, 
+        "on_target": 0.46059808119078754, 
+        "query_sequence": "TTATACAAATATAGAAGAAACGG", 
+        "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
+        "start": 239597
+    }, 
+    {
+        "chr": "chr12", 
+        "end": 19756456, 
+        "id": "37593f43-d935-460d-952d-466f720d3503", 
+        "off_target": 0.0, 
+        "on_target": 0.45532859798703962, 
+        "query_sequence": "TTTTTCAAATATAGAAGAAAGGG", 
+        "sequence": "CAGTTTTTTCAAATATAGAAGAAAGGgcaa", 
+        "start": 19756426
+    }
+]

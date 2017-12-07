@@ -111,27 +111,24 @@ def gem_query(sequence_file_map):
     sys.stdout.flush()
     alignment_list = []
     for seq in sequence_file_map:
-        alignment_map = {}
         query_file = make_query_file(seq)
         for target_file in sequence_file_map[seq]:
             sys.stdout.write(".")
             sys.stdout.flush()
-            alignment_map["id"] = str(uuid.uuid4())
-            alignment_map["chr_path"] = str(target_file)
-            alignment_map["query_sequqnce"] = seq
             gem_file = str(target_file) + ".gem"
             os.system(
                 "gem-mapper -I " + gem_file + " -i " + query_file + " -q \'ignore\' -m 0 -o output >/dev/null 2>&1")
             os.system("gem-2-sam -i output.map -o output.sam >/dev/null 2>&1")
             matches = parse_sam_file("output.sam")
             for match in matches:
-                match = int(match)
-                match -= 5
-                alignment_map["start"] = match
-                alignment_map["end"] = int(match) + 30
+                match_index = int(match)
+                match_index -= 5
+                alignment_map = {"query_sequence": seq, "chr_path": str(target_file), "id": str(uuid.uuid4()),
+                                 "start": match_index, "end": int(match_index) + 30}
                 genome = read_genome(target_file)
-                alignment_map["sequence"] = genome[match: (match + 30)]
+                alignment_map["sequence"] = genome[match_index: (match_index + 30)]
                 alignment_list.append(alignment_map)
+                del alignment_map
     print "\n Done"
     return alignment_list
 

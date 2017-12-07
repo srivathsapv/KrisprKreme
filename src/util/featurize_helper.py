@@ -56,6 +56,7 @@ def heat(seq):
 
 
 def extract_features(processed_json, score=None):
+    print(processed_json)
     seq = processed_json['sequence']
     alpha = ['A', 'C', 'G', 'T']
     poly_nucleotides = generate_poly_nucleotides(alpha)
@@ -68,8 +69,6 @@ def extract_features(processed_json, score=None):
         {'cut_position': processed_json['cut_position'], 'percent_peptide': processed_json['percent_peptide']})
     features.update({'mfe': mfe(seq), 'specific_heat': heat(seq)})
 
-    if not score:
-        features.update({'score': processed_json['score']})
 
     return features
 

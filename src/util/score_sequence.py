@@ -4,15 +4,18 @@ import json
 
 processed_data = json.loads(open('src/model/data/processed.json').read())
 
+
 def hamming_distance(str1, str2):
     if len(str1) != len(str2):
         return -1
 
     return len([i for i in xrange(len(str1)) if str1[i] != str2[i]])
 
+
 def get_score(seq):
+    print seq
     hamming_dist = [(i, hamming_distance(seq, d['sequence'])) for i, d in enumerate(processed_data)]
-    hamming_dist.sort(key=lambda tup:tup[1])
+    hamming_dist.sort(key=lambda tup: tup[1])
 
     nearest_sequence = processed_data[hamming_dist[0][0]]
 

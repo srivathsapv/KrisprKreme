@@ -19,7 +19,7 @@ sys.path.append('../util')
 from src.util.featurize_helper import get_data_with_important_features
 
 print('reading data...')
-with open('../model/data/featurized.csv', 'rb') as csv_file:
+with open('src/model/data/featurized.csv', 'rb') as csv_file:
     reader = csv.DictReader(csv_file)
     featurized_data = list(reader)
 
@@ -116,38 +116,38 @@ model = evaluate_model('Random Forest',
                        RandomForestRegressor(n_estimators=150, max_depth=128, random_state=0, verbose=2))
 pickle.dump(model, open('../model_files/rf_150_128.pkl', 'wb'))
 
-# print('getting data with important features')
-# feature_reduced_data = get_data_with_important_features(score_threshold=0.5, featurized_data=featurized_data)
-# print('using {} features'.format(len(feature_reduced_data[0].keys())))
-# print('getting training data...')
-# train_data, train_labels = get_data_and_classes(feature_reduced_data[:4500])
-# print('getting test data...')
-# test_data, test_labels = get_data_and_classes(feature_reduced_data[4500:])
-#
-# plot_metrics_curve(
-# 	model=SVC(C=1.0, kernel='rbf', degree=2, verbose=2, probability=True),
-# 	plot_type='roc',
-# 	plot_title='SVM ROC Curve',
-# 	train_data=train_data, train_labels=train_labels,
-# 	test_data=test_data, test_labels=test_labels)
-#
-# plot_metrics_curve(
-# 	model=SVC(C=1.0, kernel='rbf', degree=2, verbose=2, probability=True),
-# 	plot_type='precision_recall',
-# 	plot_title='SVM Precision-Recall Curve',
-# 	train_data=train_data, train_labels=train_labels,
-# 	test_data=test_data, test_labels=test_labels)
-#
-# plot_metrics_curve(
-# 	model=RandomForestClassifier(n_estimators=150, max_depth=128, random_state=0, verbose=2),
-# 	plot_type='roc',
-# 	plot_title='Random Forest ROC Curve',
-# 	train_data=train_data, train_labels=train_labels,
-# 	test_data=test_data, test_labels=test_labels)
-#
-# plot_metrics_curve(
-# 	model=RandomForestClassifier(n_estimators=150, max_depth=128, random_state=0, verbose=2),
-# 	plot_type='precision_recall',
-# 	plot_title='Random Forest Precision-Recall Curve',
-# 	train_data=train_data, train_labels=train_labels,
-# 	test_data=test_data, test_labels=test_labels)
+print('getting data with important features')
+feature_reduced_data = get_data_with_important_features(score_threshold=0.5, featurized_data=featurized_data)
+print('using {} features'.format(len(feature_reduced_data[0].keys())))
+print('getting training data...')
+train_data, train_labels = get_data_and_classes(feature_reduced_data[:4500])
+print('getting test data...')
+test_data, test_labels = get_data_and_classes(feature_reduced_data[4500:])
+
+plot_metrics_curve(
+    model=SVC(C=1.0, kernel='rbf', degree=2, verbose=2, probability=True),
+    plot_type='roc',
+    plot_title='SVM ROC Curve',
+    train_data=train_data, train_labels=train_labels,
+    test_data=test_data, test_labels=test_labels)
+
+plot_metrics_curve(
+    model=SVC(C=1.0, kernel='rbf', degree=2, verbose=2, probability=True),
+    plot_type='precision_recall',
+    plot_title='SVM Precision-Recall Curve',
+    train_data=train_data, train_labels=train_labels,
+    test_data=test_data, test_labels=test_labels)
+
+plot_metrics_curve(
+    model=RandomForestClassifier(n_estimators=150, max_depth=128, random_state=0, verbose=2),
+    plot_type='roc',
+    plot_title='Random Forest ROC Curve',
+    train_data=train_data, train_labels=train_labels,
+    test_data=test_data, test_labels=test_labels)
+
+plot_metrics_curve(
+    model=RandomForestClassifier(n_estimators=150, max_depth=128, random_state=0, verbose=2),
+    plot_type='precision_recall',
+    plot_title='Random Forest Precision-Recall Curve',
+    train_data=train_data, train_labels=train_labels,
+    test_data=test_data, test_labels=test_labels)
