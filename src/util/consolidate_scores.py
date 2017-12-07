@@ -1,5 +1,6 @@
 from score_sequence import get_score as score_ontarget
 from cfd import calc_cfd as score_offtarget
+import json
 
 def parse_chr_name(fa_filepath):
     splits =  fa_filepath.split('/')
@@ -34,38 +35,12 @@ def get_ontarget_scores(putative_sites):
 
     return sites_copy
 
-"""
-Sample Dict
-"""
-psites = [{
-    'id': 1,
-    'chr_path': 'path_to_chr/chr17.fa',
-    'start': 199920,
-    'end': 199950,
-    'sequence': 'AAAAAACCTACCGTAAACTCCCGTCGGCCT'
-}, {
-    'id': 2,
-    'chr_path': 'path_to_chr/chr21.fa',
-    'start': 1200,
-    'end': 1230,
-    'sequence': 'GGGGCCTACCGTAAACTCCCGTCCTGGTCT'
-}, {
-    'id': 3,
-    'chr_path': 'path_to_chr/chr17.fa',
-    'start': 920,
-    'end': 950,
-    'sequence': 'AAAAAACCTACTCGAAACCGCCGTCGGCCT'
-}]
+def rank_putative_sites(sgrna, putative_sites_file, n_sites=10):
+    putative_sites = json.loads(open(putative_sites_file, 'r').read())
 
-
-def rank_putative_sites(sgrna, putative_sites, n_sites=10):
     sites = get_offtarget_scores(sgrna, putative_sites)
     sites = get_ontarget_scores(sites)
-
 
     sites.sort(key=lambda d:d['on_target'])
 
     return sites[::-1][:n_sites]
-
-
-print(rank_putative_sites('CCTACCGTAAACTCCCGTCC', psites))
