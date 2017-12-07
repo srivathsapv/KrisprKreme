@@ -78,7 +78,7 @@ def bloom_query(sequence, path):
                     sequence_file_map[seq].append(str(fa_file))
                 else:
                     sequence_file_map[seq] = [str(fa_file)]
-        print Style.RESET_ALL + "\t" + str(count) + " matches in this chromosome"
+        print Style.RESET_ALL + "\t" + str(count) + " matches in this chunk"
         print Style.RESET_ALL
     return sequence_file_map
 

@@ -1,0 +1,10 @@
+[
+    {
+        "chr_path": "Phi-Genome/phix.fa", 
+        "end": 383, 
+        "id": "60cf0142-8bf6-4352-9c35-0099382d4371", 
+        "query_sequence": "GATGCTGTTCAACCACTAATAGG", 
+        "sequence": "GTCCGATGCTGTTCAACCACTAATAGGTAA", 
+        "start": 353
+    }
+]

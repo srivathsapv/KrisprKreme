@@ -1,0 +1,12 @@
+[
+    {
+        "chr": "phix", 
+        "end": 383, 
+        "id": "60cf0142-8bf6-4352-9c35-0099382d4371", 
+        "off_target": 0.0, 
+        "on_target": 0.50076445123195557, 
+        "query_sequence": "GATGCTGTTCAACCACTAATAGG", 
+        "sequence": "GTCCGATGCTGTTCAACCACTAATAGGTAA", 
+        "start": 353
+    }
+]
