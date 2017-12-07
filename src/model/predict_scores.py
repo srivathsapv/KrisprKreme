@@ -23,7 +23,6 @@ with open('src/model/data/featurized.csv', 'rb') as csv_file:
     reader = csv.DictReader(csv_file)
     featurized_data = list(reader)
 
-
 def get_data_and_scores(dlist):
     scores = [float(row['score']) for row in dlist]
     data_list = [[float(v) for k, v in row.iteritems() if k != 'score'] for row in dlist]
@@ -55,7 +54,6 @@ def get_activity_class(score):
         return 0
     return 1
 
-
 def evaluate_model(model_name, sklearn_model, score_threshold=0.5, accuracy_threshold=0.1):
     print('Evaluation for model_name={}'.format(model_name))
     print('--------------------')
@@ -81,7 +79,6 @@ def evaluate_model(model_name, sklearn_model, score_threshold=0.5, accuracy_thre
 
     return sklearn_model
 
-
 def plot_metrics_curve(model, plot_type, plot_title, train_data, train_labels, test_data, test_labels):
     if plot_type == 'roc':
         plotter = skplt.metrics.plot_roc_curve
@@ -104,7 +101,6 @@ def plot_metrics_curve(model, plot_type, plot_title, train_data, train_labels, t
     ax.legend(handles, new_labels)
     plt.show()
 
-
 # evaluate_model('Linear Regression', LinearRegression())
 # evaluate_model('Ridge', Ridge(alpha=12))
 # evaluate_model('SVM', SVR(C=10.0, epsilon=0.001, kernel='rbf', verbose=True), score_threshold=0.2)
@@ -114,7 +110,7 @@ def plot_metrics_curve(model, plot_type, plot_title, train_data, train_labels, t
 
 model = evaluate_model('Random Forest',
                        RandomForestRegressor(n_estimators=150, max_depth=128, random_state=0, verbose=2))
-pickle.dump(model, open('../model_files/rf_150_128.pkl', 'wb'))
+pickle.dump(model, open('src/model_files/rf_150_128.pkl', 'wb'))
 
 print('getting data with important features')
 feature_reduced_data = get_data_with_important_features(score_threshold=0.5, featurized_data=featurized_data)

@@ -46,5 +46,4 @@ def rank_putative_sites(sgrna, putative_sites_file, n_sites=10):
     sites = get_ontarget_scores(sites)
 
     sites.sort(key=lambda d: d['on_target'])
-
     return sites[::-1][:n_sites]

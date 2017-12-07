@@ -72,8 +72,7 @@ def extract_features(processed_json):
 
     return features
 
-
-processed_data = json.loads(open('data/processed.json').read())
+processed_data = json.loads(open('src/model/data/processed.json').read())
 
 featurized_data = []
 
@@ -81,7 +80,7 @@ for i, data in enumerate(processed_data):
     print('featurizing {}'.format(i))
     featurized_data.append(extract_features(data))
 
-with open('data/featurized.csv', 'wb') as csv_file:
+with open('src/model/data/featurized2.csv', 'wb') as csv_file:
     dict_writer = csv.DictWriter(csv_file, featurized_data[0].keys())
     dict_writer.writeheader()
 
