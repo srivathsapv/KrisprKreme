@@ -1,6 +1,6 @@
-
 import argparse
-from util import build_index, validate, query_genome
+import json
+from util import build_index, validate, query_genome, consolidate_scores
 
 
 def parse_cmd_args():
@@ -32,6 +32,16 @@ def parse_cmd_args():
     query_parser.add_argument('-s', '--sequence', required=True, help="The query sequence")
     query_parser.add_argument("-o", "--output", type=str, required=True, help="Where to write the output file")
 
+    # Score sub parser
+    score_parser = subparsers.add_parser('score', help="options to query an sgRNA sequence in the genome")
+    score_parser.set_defaults(which="score_parser")
+    score_parser.add_argument('-i', '--input',
+                              type=str,
+                              required=True,
+                              help="path to the input json file")
+    score_parser.add_argument('-s', '--sequence', required=True, help="The query sequence")
+    score_parser.add_argument("-o", "--output", type=str, required=True, help="Where to write the output file")
+
     # Parse args
     args = parser.parse_args()
     return vars(args)
@@ -59,6 +69,19 @@ def handle_query_parser(args):
     sgrna = args["sequence"]
     validate.is_valid_sgrna(sgrna)
     query_genome.main(False, args)
+
+
+def handle_score_parser(args):
+    """Handles the build score portion of the program
+
+    Passes the cmdline args to the score module
+
+    Arguments:
+        args {map} -- A dict with the cmdline arguments
+    """
+    final_vals = consolidate_scores.rank_putative_sites(args["sequence"], args["input"])
+    with open(args["output"], 'w') as file_handle:
+        file_handle.write(json.dumps(final_vals, indent=4, sort_keys=True))
 
 
 def main():

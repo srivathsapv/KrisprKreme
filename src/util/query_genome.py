@@ -69,7 +69,7 @@ def bloom_query(sequence, path):
         count = 0
         bloom_file = fa_file + ".pkl"
         sys.stdout.write(" ")
-        print (Fore.WHITE + Back.BLUE + "Opening " + bloom_file)
+        print (Fore.BLUE + "Opening " + bloom_file)
         bloom_filter = pickle.load(open(bloom_file, 'rb'))
         for seq in potential_sequences:
             if seq in bloom_filter:
@@ -107,7 +107,7 @@ def gem_query(sequence_file_map):
     :param sequence_file_map: a map of sequences to fa files they occur in  
     :return: None
     """
-    sys.stdout.write(Fore.WHITE + Back.RED + "\n Starting GEM query")
+    sys.stdout.write(Fore.RED + "\n Starting GEM query")
     sys.stdout.flush()
     alignment_list = []
     for seq in sequence_file_map:

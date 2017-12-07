@@ -2,7 +2,7 @@
     {
         "chr_path": "H-Genome/chr12.fa", 
         "end": 19756456, 
-        "id": "3569b431-1380-4fe0-840d-87feb3980ffc", 
+        "id": "ca3a1e6f-8717-4761-b2f1-c03c255ac2ae", 
         "query_sequqnce": "TTTTTCAAATATAGAAGAAAGGG", 
         "sequence": "CAGTTTTTTCAAATATAGAAGAAAGGgcaa", 
         "start": 19756426
@@ -10,7 +10,7 @@
     {
         "chr_path": "H-Genome/chr4.fa", 
         "end": 120371689, 
-        "id": "748646b5-ac77-4254-bfb1-72a79aca2f86", 
+        "id": "57be8450-e4ca-44a5-9ccb-187900e44a37", 
         "query_sequqnce": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 120371659
@@ -18,7 +18,7 @@
     {
         "chr_path": "H-Genome/chr4.fa", 
         "end": 120371689, 
-        "id": "748646b5-ac77-4254-bfb1-72a79aca2f86", 
+        "id": "57be8450-e4ca-44a5-9ccb-187900e44a37", 
         "query_sequqnce": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 120371659
@@ -26,7 +26,7 @@
     {
         "chr_path": "H-Genome/chr4.fa", 
         "end": 120371689, 
-        "id": "748646b5-ac77-4254-bfb1-72a79aca2f86", 
+        "id": "57be8450-e4ca-44a5-9ccb-187900e44a37", 
         "query_sequqnce": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 120371659
@@ -34,7 +34,7 @@
     {
         "chr_path": "H-Genome/chr4.fa", 
         "end": 120371689, 
-        "id": "748646b5-ac77-4254-bfb1-72a79aca2f86", 
+        "id": "57be8450-e4ca-44a5-9ccb-187900e44a37", 
         "query_sequqnce": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 120371659
@@ -42,7 +42,7 @@
     {
         "chr_path": "H-Genome/chr4.fa", 
         "end": 120371689, 
-        "id": "748646b5-ac77-4254-bfb1-72a79aca2f86", 
+        "id": "57be8450-e4ca-44a5-9ccb-187900e44a37", 
         "query_sequqnce": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 120371659
@@ -50,7 +50,7 @@
     {
         "chr_path": "H-Genome/chr4.fa", 
         "end": 120371689, 
-        "id": "748646b5-ac77-4254-bfb1-72a79aca2f86", 
+        "id": "57be8450-e4ca-44a5-9ccb-187900e44a37", 
         "query_sequqnce": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 120371659
@@ -58,7 +58,7 @@
     {
         "chr_path": "H-Genome/chr4.fa", 
         "end": 120371689, 
-        "id": "748646b5-ac77-4254-bfb1-72a79aca2f86", 
+        "id": "57be8450-e4ca-44a5-9ccb-187900e44a37", 
         "query_sequqnce": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 120371659
@@ -66,7 +66,7 @@
     {
         "chr_path": "H-Genome/chr4.fa", 
         "end": 120371689, 
-        "id": "748646b5-ac77-4254-bfb1-72a79aca2f86", 
+        "id": "57be8450-e4ca-44a5-9ccb-187900e44a37", 
         "query_sequqnce": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 120371659
@@ -74,7 +74,7 @@
     {
         "chr_path": "H-Genome/chr4.fa", 
         "end": 120371689, 
-        "id": "748646b5-ac77-4254-bfb1-72a79aca2f86", 
+        "id": "57be8450-e4ca-44a5-9ccb-187900e44a37", 
         "query_sequqnce": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 120371659
@@ -82,7 +82,7 @@
     {
         "chr_path": "H-Genome/chr4.fa", 
         "end": 120371689, 
-        "id": "748646b5-ac77-4254-bfb1-72a79aca2f86", 
+        "id": "57be8450-e4ca-44a5-9ccb-187900e44a37", 
         "query_sequqnce": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 120371659
@@ -90,7 +90,7 @@
     {
         "chr_path": "H-Genome/chr4.fa", 
         "end": 120371689, 
-        "id": "748646b5-ac77-4254-bfb1-72a79aca2f86", 
+        "id": "57be8450-e4ca-44a5-9ccb-187900e44a37", 
         "query_sequqnce": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 120371659
@@ -98,7 +98,7 @@
     {
         "chr_path": "H-Genome/chr4.fa", 
         "end": 156847213, 
-        "id": "758f226f-6fab-48fb-9ca7-e4250bb43961", 
+        "id": "5e111c6a-9284-4d23-b171-5050ba8189fb", 
         "query_sequqnce": "TCACACAAATATAGAAGAAACGG", 
         "sequence": "CATGTCACACAAATATAGAAGAAACGGAAT", 
         "start": 156847183
