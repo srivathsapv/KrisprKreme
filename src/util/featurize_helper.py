@@ -69,7 +69,6 @@ def extract_features(processed_json, score=None):
         {'cut_position': processed_json['cut_position'], 'percent_peptide': processed_json['percent_peptide']})
     features.update({'mfe': mfe(seq), 'specific_heat': heat(seq)})
 
-
     return features
 
 

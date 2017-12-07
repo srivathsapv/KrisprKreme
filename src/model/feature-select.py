@@ -13,7 +13,7 @@ with open('./data/featurized.csv', 'rb') as csv_file:
 scores = [float(row['score']) for row in featurized_data]
 
 feature_names = featurized_data[0].keys()
-data_list = [[ float(v) for k, v in row.iteritems() if k != 'score'] for row in featurized_data]
+data_list = [[float(v) for k, v in row.iteritems() if k != 'score'] for row in featurized_data]
 
 # lasso = Lasso(alpha=0.5)
 # lasso.fit(data_list, scores)
