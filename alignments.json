@@ -2,31 +2,239 @@
     {
         "chr_path": "H-Genome/chr12.fa", 
         "end": 19756456, 
-        "id": "37593f43-d935-460d-952d-466f720d3503", 
+        "id": "9d5cd538-afd9-4bdb-bb7c-837e1869a846", 
         "query_sequence": "TTTTTCAAATATAGAAGAAAGGG", 
         "sequence": "CAGTTTTTTCAAATATAGAAGAAAGGgcaa", 
         "start": 19756426
     }, 
     {
+        "chr_path": "H-Genome/chr10.fa", 
+        "end": 92128337, 
+        "id": "3b0c76d3-8a65-4343-94bb-3636e561f53d", 
+        "query_sequence": "ATTAGCAAATATAGAAGAAATGG", 
+        "sequence": "ttatccatttcttctatatttgctaattta", 
+        "start": 92128307
+    }, 
+    {
+        "chr_path": "H-Genome/chr21.fa", 
+        "end": 36524555, 
+        "id": "0b0b173e-072a-43a8-b2fb-07e8b7460c84", 
+        "query_sequence": "TATGAAAAATATAGAAGAAAGGG", 
+        "sequence": "aaagtatgaaaaatatagaagaaagggtaa", 
+        "start": 36524525
+    }, 
+    {
+        "chr_path": "H-Genome/chr4.fa", 
+        "end": 156847213, 
+        "id": "12839d1f-1122-45f6-a0d1-82da9d9a80eb", 
+        "query_sequence": "TCACACAAATATAGAAGAAACGG", 
+        "sequence": "CATGTCACACAAATATAGAAGAAACGGAAT", 
+        "start": 156847183
+    }, 
+    {
+        "chr_path": "H-Genome/chr7.fa", 
+        "end": 16796363, 
+        "id": "abcb22c1-57ad-409b-b68a-134b745d982b", 
+        "query_sequence": "GTTTGTAAATATAGAAGAAAAGG", 
+        "sequence": "AACAGTTTGTAAATATAGAAGAAAAGGGGG", 
+        "start": 16796333
+    }, 
+    {
+        "chr_path": "H-Genome/chr7.fa", 
+        "end": 65238253, 
+        "id": "5bc108fd-a385-4f4b-9908-59197d10becb", 
+        "query_sequence": "TTATACAAATATAGAAGAAAGGG", 
+        "sequence": "TATTCCCTTTCTTCTATATTTGTATAACTT", 
+        "start": 65238223
+    }, 
+    {
+        "chr_path": "H-Genome/chr7.fa", 
+        "end": 64544123, 
+        "id": "9c89a944-ac37-4646-830a-cae17b2ad0f1", 
+        "query_sequence": "TTATACAAATATAGAAGAAAGGG", 
+        "sequence": "TATTCCCTTTCTTCTATATTTGTATAACTT", 
+        "start": 64544093
+    }, 
+    {
+        "chr_path": "H-Genome/chr6.fa", 
+        "end": 111369036, 
+        "id": "a144a119-0207-45f3-aa25-228edb9cd6b6", 
+        "query_sequence": "CTTTCAAAATATAGAAGAAAAGG", 
+        "sequence": "gttcccttttcttctatattttgaaagagt", 
+        "start": 111369006
+    }, 
+    {
+        "chr_path": "H-Genome/chr6.fa", 
+        "end": 25, 
+        "id": "67f0a768-07cb-4166-953d-2941994ea125", 
+        "query_sequence": "GCTTAAAAATATAGAAGAAAAGG", 
+        "sequence": "", 
+        "start": -5
+    }, 
+    {
+        "chr_path": "H-Genome/chr9.fa", 
+        "end": 115753172, 
+        "id": "edb5b638-0073-4977-9cbe-db1c7d12f424", 
+        "query_sequence": "AGCTAGAAATATAGAAGAAATGG", 
+        "sequence": "gtatccatttcttctatatttctagcttat", 
+        "start": 115753142
+    }, 
+    {
+        "chr_path": "H-Genome/chr22.fa", 
+        "end": 28837312, 
+        "id": "1903e7e9-842a-4e99-8dd3-ab439fae02ba", 
+        "query_sequence": "AATTACAAATATAGAAGAAATGG", 
+        "sequence": "ATGCAATTACAAATATAGAAGAAATGGGGG", 
+        "start": 28837282
+    }, 
+    {
+        "chr_path": "H-Genome/chr10.fa", 
+        "end": 25, 
+        "id": "0b6a8750-ca2e-44c6-ad0e-40195353ed4a", 
+        "query_sequence": "CTTCAAAAATATAGAAGAAATGG", 
+        "sequence": "", 
+        "start": -5
+    }, 
+    {
+        "chr_path": "H-Genome/chr17.fa", 
+        "end": 25, 
+        "id": "a82f63e1-a409-4857-bb74-29fb23c4b769", 
+        "query_sequence": "GCCTGCAAATATAGAAGAAAGGG", 
+        "sequence": "", 
+        "start": -5
+    }, 
+    {
+        "chr_path": "H-Genome/chr3.fa", 
+        "end": 181068954, 
+        "id": "c67c346a-579d-4d2e-8960-e8fddef5da8d", 
+        "query_sequence": "ACAGAAAAATATAGAAGAAAAGG", 
+        "sequence": "TTCTCCTTTTCTTCTATATTTTTCTGTTTC", 
+        "start": 181068924
+    }, 
+    {
+        "chr_path": "H-Genome/chr12.fa", 
+        "end": 84582970, 
+        "id": "75c22677-4fcc-401b-b3e6-2e39ebb1a6cf", 
+        "query_sequence": "GTTAAAAAATATAGAAGAAATGG", 
+        "sequence": "acaagttaaaaaatatagaagaaatggata", 
+        "start": 84582940
+    }, 
+    {
+        "chr_path": "H-Genome/chr20.fa", 
+        "end": 7514160, 
+        "id": "df24214b-a566-4ab2-ae48-0c64bf1092c0", 
+        "query_sequence": "TATTTTAAATATAGAAGAAAAGG", 
+        "sequence": "CATATATTTTAAATATAGAAGAAAAGGTGA", 
+        "start": 7514130
+    }, 
+    {
+        "chr_path": "H-Genome/chr20.fa", 
+        "end": 25, 
+        "id": "fbad3c91-d4e9-4742-8802-21c6b89155b4", 
+        "query_sequence": "CGCTACAAATATAGAAGAAAGGG", 
+        "sequence": "", 
+        "start": -5
+    }, 
+    {
+        "chr_path": "H-Genome/chr10.fa", 
+        "end": 83382618, 
+        "id": "5d5f9af1-2462-47f1-b1db-7a357ee031f4", 
+        "query_sequence": "ATTGAAAAATATAGAAGAAATGG", 
+        "sequence": "ttgtccatttcttctatatttttcaattca", 
+        "start": 83382588
+    }, 
+    {
+        "chr_path": "H-Genome/chr13.fa", 
+        "end": 25, 
+        "id": "7d0a1d3c-519d-4ac4-89f2-ea76dd4e1d58", 
+        "query_sequence": "GTTGATAAATATAGAAGAAAAGG", 
+        "sequence": "", 
+        "start": -5
+    }, 
+    {
+        "chr_path": "H-Genome/chr15.fa", 
+        "end": 42941105, 
+        "id": "719fae67-2a07-4302-96b9-d471a2da1113", 
+        "query_sequence": "TTAATTAAATATAGAAGAAATGG", 
+        "sequence": "cttaccatttcttctatatttAATTAATTA", 
+        "start": 42941075
+    }, 
+    {
+        "chr_path": "H-Genome/chr15.fa", 
+        "end": 25, 
+        "id": "22ac67f1-c3c5-4b47-9dab-b04a0f7390d8", 
+        "query_sequence": "TTTCCGAAATATAGAAGAAAGGG", 
+        "sequence": "", 
+        "start": -5
+    }, 
+    {
+        "chr_path": "H-Genome/chr20.fa", 
+        "end": 25, 
+        "id": "58c4601e-c374-4e2b-acc8-54226305d092", 
+        "query_sequence": "GCAGACAAATATAGAAGAAAGGG", 
+        "sequence": "", 
+        "start": -5
+    }, 
+    {
+        "chr_path": "H-Genome/chr8.fa", 
+        "end": 107013189, 
+        "id": "a7bac785-8382-4a2e-be72-a77f276cd3b9", 
+        "query_sequence": "ACATTTAAATATAGAAGAAAAGG", 
+        "sequence": "TGCTCCTTTTCTTCTATATTTAAATGTATT", 
+        "start": 107013159
+    }, 
+    {
+        "chr_path": "H-Genome/chr3.fa", 
+        "end": 197907266, 
+        "id": "a5caa8f6-044e-4b9b-8913-49cc459695cc", 
+        "query_sequence": "TTATACAAATATAGAAGAAACGG", 
+        "sequence": "TATCCCGTTTCTTCTATATTTGTATAACTT", 
+        "start": 197907236
+    }, 
+    {
+        "chr_path": "H-Genome/chr16.fa", 
+        "end": 90194671, 
+        "id": "100d4a0c-fbfd-4ece-9273-1811264c4b6a", 
+        "query_sequence": "TTATACAAATATAGAAGAAACGG", 
+        "sequence": "TATCCCGTTTCTTCTATATTTGTATAACTT", 
+        "start": 90194641
+    }, 
+    {
         "chr_path": "H-Genome/chr19.fa", 
         "end": 239627, 
-        "id": "ec5e9f6e-a386-4aa0-bac7-e8f8a4c21f59", 
+        "id": "620443d0-6797-4d6a-be60-24d435122c8a", 
         "query_sequence": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 239597
     }, 
     {
+        "chr_path": "H-Genome/chr10.fa", 
+        "end": 38696199, 
+        "id": "d4dd33ae-a9d1-4bca-ac99-203690988947", 
+        "query_sequence": "TTATACAAATATAGAAGAAACGG", 
+        "sequence": "TATCCCGTTTCTTCTATATTTGTATAACTT", 
+        "start": 38696169
+    }, 
+    {
         "chr_path": "H-Genome/chr11.fa", 
         "end": 169440, 
-        "id": "ad44ac78-b919-4a98-8bce-a9b1277355ba", 
+        "id": "7854e4b1-d4eb-4f71-ad7b-67b3f8f424e6", 
         "query_sequence": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 169410
     }, 
     {
+        "chr_path": "H-Genome/chr9.fa", 
+        "end": 141133710, 
+        "id": "6cf92f51-2685-4ff3-a937-bf7cdf317e5e", 
+        "query_sequence": "TTATACAAATATAGAAGAAACGG", 
+        "sequence": "TATCCCGTTTCTTCTATATTTGTATAACTT", 
+        "start": 141133680
+    }, 
+    {
         "chr_path": "H-Genome/chr7.fa", 
         "end": 128257562, 
-        "id": "2d013853-7790-4f1c-b6ce-d299fbede905", 
+        "id": "bf5ff062-aee2-4e58-b381-972156cf1fdc", 
         "query_sequence": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "TATCCCGTTTCTTCTATATTTGTATAACTT", 
         "start": 128257532
@@ -34,7 +242,7 @@
     {
         "chr_path": "H-Genome/chr7.fa", 
         "end": 45812803, 
-        "id": "6c828364-ca6a-4bf8-8445-d06263aaf6ab", 
+        "id": "acf7fbe3-4198-425b-8c81-6d9a599ef6f4", 
         "query_sequence": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "TATCCCGTTTCTTCTATATTTGTATAACTT", 
         "start": 45812773
@@ -42,7 +250,7 @@
     {
         "chr_path": "H-Genome/chr7.fa", 
         "end": 10559, 
-        "id": "a5b6981f-8703-4d91-9483-9f663da3bef9", 
+        "id": "b5bb18e2-4918-4ebf-a3cc-07a5fa1bf5aa", 
         "query_sequence": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 10529
@@ -50,7 +258,7 @@
     {
         "chr_path": "H-Genome/chr1.fa", 
         "end": 243260989, 
-        "id": "4ea8a2df-02d9-40e3-bbd3-8aa92e8a8a2c", 
+        "id": "71bdae79-f937-4aa0-89c2-b8d070fa5692", 
         "query_sequence": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 243260959
@@ -58,7 +266,7 @@
     {
         "chr_path": "H-Genome/chr1.fa", 
         "end": 222693462, 
-        "id": "4c5543a3-3b77-4f58-ba24-7ec204efd683", 
+        "id": "588616c2-50aa-4746-9821-4c8ca3dec455", 
         "query_sequence": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 222693432
@@ -66,7 +274,7 @@
     {
         "chr_path": "H-Genome/chr1.fa", 
         "end": 224176244, 
-        "id": "5e6b5933-7ce9-411a-834d-d3b4969f06b1", 
+        "id": "18e9a610-0dff-4445-887d-08ab60a5ee33", 
         "query_sequence": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 224176214
@@ -74,7 +282,7 @@
     {
         "chr_path": "H-Genome/chr1.fa", 
         "end": 710048, 
-        "id": "5a8ae6d1-024f-4daa-9b64-b84f00041aab", 
+        "id": "5c16df0f-55a9-4ff9-bea7-123f4697a95a", 
         "query_sequence": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 710018
@@ -82,7 +290,7 @@
     {
         "chr_path": "H-Genome/chr1.fa", 
         "end": 174250, 
-        "id": "587171d0-ffae-47ff-8dc8-85abad791ef4", 
+        "id": "74a0f91c-4e85-4fa7-8fa0-6d43261fc896", 
         "query_sequence": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 174220
@@ -90,17 +298,41 @@
     {
         "chr_path": "H-Genome/chr4.fa", 
         "end": 120371689, 
-        "id": "d482af8f-98de-4e01-8403-ec25f5eabb86", 
+        "id": "ed085c39-89d4-4584-b4c6-ba88bafd88ef", 
         "query_sequence": "TTATACAAATATAGAAGAAACGG", 
         "sequence": "AAAGTTATACAAATATAGAAGAAACGGGAT", 
         "start": 120371659
     }, 
     {
-        "chr_path": "H-Genome/chr4.fa", 
-        "end": 156847213, 
-        "id": "3806a00b-3d0e-4de0-8b9c-6d3af571ae6f", 
-        "query_sequence": "TCACACAAATATAGAAGAAACGG", 
-        "sequence": "CATGTCACACAAATATAGAAGAAACGGAAT", 
-        "start": 156847183
+        "chr_path": "H-Genome/chr12.fa", 
+        "end": 85616508, 
+        "id": "a8d870fa-e595-4581-8598-25e84093c6c7", 
+        "query_sequence": "TGCTGAAAATATAGAAGAAAAGG", 
+        "sequence": "agaatgctgaaaatatagaagaaaagggaa", 
+        "start": 85616478
+    }, 
+    {
+        "chr_path": "H-Genome/chr20.fa", 
+        "end": 6528989, 
+        "id": "d9a73f35-c274-4c40-9106-404c8e3606ef", 
+        "query_sequence": "TTTTCAAAATATAGAAGAAATGG", 
+        "sequence": "agctttttcaaaatatagaagaaatgggag", 
+        "start": 6528959
+    }, 
+    {
+        "chr_path": "H-Genome/chr19.fa", 
+        "end": 23135726, 
+        "id": "55076a69-1440-4c14-8200-25f7e4f66b52", 
+        "query_sequence": "AACTAGAAATATAGAAGAAATGG", 
+        "sequence": "aataaactagaaatatagaagaaatggatg", 
+        "start": 23135696
+    }, 
+    {
+        "chr_path": "H-Genome/chr1.fa", 
+        "end": 74384294, 
+        "id": "30e8da5f-7c49-41e4-824c-4ae8e03e9d54", 
+        "query_sequence": "CAACTCAAATATAGAAGAAAAGG", 
+        "sequence": "ATGACAACTCAAATATAGAAGAAAAGGGGA", 
+        "start": 74384264
     }
 ]
