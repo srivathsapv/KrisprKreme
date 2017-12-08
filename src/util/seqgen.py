@@ -79,6 +79,13 @@ def generate_hamming_neighbors(st, alph, edits=1):
 
     return ret
 
+def compliment(symbol):
+  compliment_map = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
+  return compliment_map[symbol]
+
+def reverse_compliment(dna):
+  reverse_dna = dna[::-1]
+  return ''.join(map(str, [compliment(c) for c in reverse_dna]))
 
 def generate_sequences(sgrna):
     sgrna = sgrna.upper()
@@ -95,7 +102,10 @@ def generate_sequences(sgrna):
     non_seed_neighbors = generate_hamming_neighbors(non_seed_sequence, ALPHA, config['mismatch_tolerance']['non_seed'])
     seed_neighbors = generate_hamming_neighbors(seed_sequence, ALPHA, config['mismatch_tolerance']['seed'])
 
-    all_sequences = list(set(
-        [non_seed + seed + pam for non_seed in non_seed_neighbors for seed in seed_neighbors for pam in pam_sequences]))
+    all_sequences =
+        [non_seed + seed + pam for non_seed in non_seed_neighbors for seed in seed_neighbors for pam in pam_sequences]
+
+    all_sequences = list(set(all_sequences + [reverse_compliment(s) for s in all_sequences]))
+
     print "Number of generated sequences " + str((len(all_sequences)))
     return all_sequences
