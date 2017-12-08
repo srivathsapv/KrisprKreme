@@ -105,23 +105,6 @@ layers {
   blobs_lr: 1
   blobs_lr: 2
   inner_product_param {
-    num_output: 36
-    weight_filler {
-      type: "xavier"
-    }
-    bias_filler {
-      type: "constant"
-    }
-  }
-}
-layers {
-  name: "ip3"
-  type: INNER_PRODUCT
-  bottom: "ip2"
-  top: "ip3"
-  blobs_lr: 1
-  blobs_lr: 2
-  inner_product_param {
     num_output: 2
     weight_filler {
       type: "xavier"
@@ -134,7 +117,7 @@ layers {
 layers {
   name: "accuracy"
   type: ACCURACY
-  bottom: "ip3"
+  bottom: "ip2"
   bottom: "label"
   top: "accuracy"
 #  include: { phase: TEST }
@@ -142,7 +125,7 @@ layers {
 layers {
   name: "loss"
   type: SOFTMAX_LOSS
-  bottom: "ip3"
+  bottom: "ip2"
   bottom: "label"
   top: "loss"
 }
