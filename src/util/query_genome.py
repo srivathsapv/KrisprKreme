@@ -12,6 +12,14 @@ from colorama import init, Fore, Back, Style
 from pybloom import ScalableBloomFilter
 
 
+def compliment(symbol):
+  compliment_map = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C'}
+  return compliment_map[symbol]
+
+def reverse_compliment(dna):
+  reverse_dna = dna[::-1]
+  return ''.join(map(str, [compliment(c) for c in reverse_dna]))
+
 def parse_cmd_args():
     """
     Parses command line args
@@ -72,7 +80,7 @@ def bloom_query(sequence, path):
         print (Fore.BLUE + "Opening " + bloom_file)
         bloom_filter = pickle.load(open(bloom_file, 'rb'))
         for seq in potential_sequences:
-            if seq in bloom_filter:
+            if (seq in bloom_filter) or (reverse_compliment(seq) in bloom_filter):
                 count += 1
                 if seq in sequence_file_map:
                     sequence_file_map[seq].append(str(fa_file))

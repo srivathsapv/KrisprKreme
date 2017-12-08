@@ -1,7 +1,7 @@
 {
 	"mismatch_tolerance": {
 		"seed": 0,
-		"non_seed": 2
+		"non_seed": 4
 	},
 	"gc_content_threshold": {
 		"low": 40,
