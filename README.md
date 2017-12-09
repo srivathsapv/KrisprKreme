@@ -2,6 +2,12 @@
 
 An efficient command-line tool for CRISPR-CAS9 experiment design.
 
+**Disclaimer:** The indices from the human genome take approx 2 days to build, if you want the prebuilt indices contact us
+
+ssures11@jhu.edu
+pvsriv@cs.jhu.edu
+
+
 ## Usage
 
 The following steps were successfully executed in an Ubuntu Box - 64-bit 16.04 Xenial.
