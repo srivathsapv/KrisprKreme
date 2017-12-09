@@ -34,8 +34,6 @@ def mfe(seq):
     with open('out.csv') as out_file:
         mfe_output = out_file.read()
 
-    os.system('rm in.csv out.csv')
-
     output_stripped = mfe_output.split('\n')[1]
     output_stripped = output_stripped[len(seq) + 3:len(output_stripped) - 1]
 

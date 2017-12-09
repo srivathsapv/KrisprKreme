@@ -101,6 +101,10 @@ def plot_metrics_curve(model, plot_type, plot_title, train_data, train_labels, t
     ax.legend(handles, new_labels)
     plt.show()
 
+"""
+Other models that we tried
+"""
+
 # evaluate_model('Linear Regression', LinearRegression())
 # evaluate_model('Ridge', Ridge(alpha=12))
 # evaluate_model('SVM', SVR(C=10.0, epsilon=0.001, kernel='rbf', verbose=True), score_threshold=0.2)
@@ -108,42 +112,50 @@ def plot_metrics_curve(model, plot_type, plot_title, train_data, train_labels, t
 # model = evaluate_model('MLPRegressor', MLPRegressor(hidden_layer_sizes=(200,), activation='logistic', solver='adam', verbose=True, random_state=5, max_iter=200))
 # pickle.dump(model, open('../model_files/mlp_150_tanh_adam_mi200.pkl', 'wb'))
 
-model = evaluate_model('Random Forest',
-                       RandomForestRegressor(n_estimators=150, max_depth=128, random_state=0, verbose=2))
-pickle.dump(model, open('src/model_files/rf_150_128.pkl', 'wb'))
+def plot_curves():
+    print('getting data with important features')
+    feature_reduced_data = get_data_with_important_features(score_threshold=0.5, featurized_data=featurized_data)
+    print('using {} features'.format(len(feature_reduced_data[0].keys())))
+    print('getting training data...')
+    train_data, train_labels = get_data_and_classes(feature_reduced_data[:4500])
+    print('getting test data...')
+    test_data, test_labels = get_data_and_classes(feature_reduced_data[4500:])
 
-print('getting data with important features')
-feature_reduced_data = get_data_with_important_features(score_threshold=0.5, featurized_data=featurized_data)
-print('using {} features'.format(len(feature_reduced_data[0].keys())))
-print('getting training data...')
-train_data, train_labels = get_data_and_classes(feature_reduced_data[:4500])
-print('getting test data...')
-test_data, test_labels = get_data_and_classes(feature_reduced_data[4500:])
+    plot_metrics_curve(
+        model=SVC(C=1.0, kernel='rbf', degree=2, verbose=2, probability=True),
+        plot_type='roc',
+        plot_title='SVM ROC Curve',
+        train_data=train_data, train_labels=train_labels,
+        test_data=test_data, test_labels=test_labels)
 
-plot_metrics_curve(
-    model=SVC(C=1.0, kernel='rbf', degree=2, verbose=2, probability=True),
-    plot_type='roc',
-    plot_title='SVM ROC Curve',
-    train_data=train_data, train_labels=train_labels,
-    test_data=test_data, test_labels=test_labels)
+    plot_metrics_curve(
+        model=SVC(C=1.0, kernel='rbf', degree=2, verbose=2, probability=True),
+        plot_type='precision_recall',
+        plot_title='SVM Precision-Recall Curve',
+        train_data=train_data, train_labels=train_labels,
+        test_data=test_data, test_labels=test_labels)
 
-plot_metrics_curve(
-    model=SVC(C=1.0, kernel='rbf', degree=2, verbose=2, probability=True),
-    plot_type='precision_recall',
-    plot_title='SVM Precision-Recall Curve',
-    train_data=train_data, train_labels=train_labels,
-    test_data=test_data, test_labels=test_labels)
+    plot_metrics_curve(
+        model=RandomForestClassifier(n_estimators=150, max_depth=128, random_state=0, verbose=2),
+        plot_type='roc',
+        plot_title='Random Forest ROC Curve',
+        train_data=train_data, train_labels=train_labels,
+        test_data=test_data, test_labels=test_labels)
 
-plot_metrics_curve(
-    model=RandomForestClassifier(n_estimators=150, max_depth=128, random_state=0, verbose=2),
-    plot_type='roc',
-    plot_title='Random Forest ROC Curve',
-    train_data=train_data, train_labels=train_labels,
-    test_data=test_data, test_labels=test_labels)
+    plot_metrics_curve(
+        model=RandomForestClassifier(n_estimators=150, max_depth=128, random_state=0, verbose=2),
+        plot_type='precision_recall',
+        plot_title='Random Forest Precision-Recall Curve',
+        train_data=train_data, train_labels=train_labels,
+        test_data=test_data, test_labels=test_labels)
 
-plot_metrics_curve(
-    model=RandomForestClassifier(n_estimators=150, max_depth=128, random_state=0, verbose=2),
-    plot_type='precision_recall',
-    plot_title='Random Forest Precision-Recall Curve',
-    train_data=train_data, train_labels=train_labels,
-    test_data=test_data, test_labels=test_labels)
+def create_model():
+    model = evaluate_model('Random Forest',
+                           RandomForestRegressor(n_estimators=150, max_depth=128, random_state=0, verbose=2))
+    pickle.dump(model, open('src/model_files/rf_150_128.pkl', 'wb'))
+
+if __name__ == "__main__":
+    if sys.argv[1] == 'create_model':
+        create_model()
+    elif sys.argv[1] == 'plot_curves':
+        plot_curves()
