@@ -10,32 +10,21 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 caffe.set_mode_cpu()
-net = caffe.Net('sgrna-inception.prototxt', './data/_iter_5000.caffemodel', caffe.TEST)
+net = caffe.Net('sgrna-dcnn.prototxt', 'alpha_iter_10000.caffemodel', caffe.TEST)
 
-img = mp.imread('./data/bit-images/seq_5282.png')
+img = mp.imread('./data/bit-images/32x32/seq_5282.png')
+net.blobs['data'].reshape(*img.shape)
+net.blobs['data'].data[...] = img
 
-img_trans = np.ndarray((3, 30, 4))
-img_trans[0, :, :] = np.transpose(img)
-img_trans[1, :, :] = np.transpose(img)
-img_trans[2, :, :] = np.transpose(img)
-
-#print(img_trans)
 net.forward()
+net_img = net.blobs['conv2'].data[0, :][0] * 255
 
-# print(np.unique(net.blobs['conv2a_5x5'].data[0], return_counts=True))
-# print(np.unique(net.blobs['conv2b_3x3'].data[0], return_counts=True))
-# print(np.unique(net.blobs['maxpool2c'].data[0], return_counts=True))
-neuron_image = net.blobs['conv2a_5x5'].data[27, 1]
 
-x, y = neuron_image.shape
+x, y = net_img.shape
+net_img_rgb = np.ndarray((x, y, 3))
 
-nw_peep = np.ndarray((x, y, 3))
-nw_peep[:, :, 0] =  neuron_image
-nw_peep[:, :, 1] =  neuron_image
-nw_peep[:, :, 2] =  neuron_image
+net_img_rgb[:, :, 0] = net_img
+net_img_rgb[:, :, 1] = net_img
+net_img_rgb[:, :, 2] = net_img
 
-print(np.unique(neuron_image))
-png.from_array(nw_peep.astype(np.uint8), 'RGB').save('nw_peep.png')
-
-# out = net.forward()
-# print(out)
+png.from_array(net_img_rgb.astype(np.uint8), 'RGB').save('nw_peep.png')
