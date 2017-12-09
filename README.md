@@ -73,3 +73,11 @@ CPU mode of Caffe and make sure you do `export $PATH=<caffe-root-path>/build/too
 $ cd src/model/cnn
 $ caffe train --solver=sgrna-dcnn-solver.prototxt
 ```
+
+## Acknowledgements
+
+1. For our relative Cutting Frequence Determination (CFD) we have used the code provided by
+   _Doench et al. Optimized sgRNA design to maximize activity and minimize off-target effects of CRISPR-Cas9_
+   (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4744125/)
+2. To generate hamming neighbors we have used Prof.Benjamin Langmead's code from his homework solutions
+3. For indexing and querying the genome using Bloom Filter we have used https://pypi.python.org/pypi/pybloom
