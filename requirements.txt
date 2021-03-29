@@ -75,7 +75,7 @@ protobuf==3.4.0
 ptyprocess==0.5.2
 pybloom==1.1
 pydot==1.2.3
-Pygments==2.2.0
+Pygments==2.7.4
 pymc==2.3.6
 pyparsing==2.2.0
 pypng==0.0.18
